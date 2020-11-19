@@ -1,0 +1,49 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-size: calc(100vw / 7.5); // 750图， 1rem === 100px
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; /*chrome、safari*/
+  -moz-osx-font-smoothing: grayscale; /*firefox*/
+}
+body {
+  font-size: 16px;
+}
+
+#app {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* BFC */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* flex */
+.flex-box {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
