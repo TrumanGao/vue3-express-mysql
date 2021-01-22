@@ -1,12 +1,23 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+
+interface State {
+  count: number;
+  userInfo: object;
+}
 
 export default createStore({
-  state: {
+  state(): State {
+    return {
+      count: 0,
+      userInfo: {}
+    };
   },
   mutations: {
-  },
-  actions: {
-  },
-  modules: {
+    increment(state: State) {
+      state.count++;
+    },
+    updateUserInfo(state: State, info) {
+      state.userInfo = info;
+    }
   }
-})
+});
