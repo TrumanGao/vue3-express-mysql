@@ -1,22 +1,15 @@
 import { createStore } from "vuex";
 
 interface State {
-  count: number;
   userInfo: object;
 }
 
 export default createStore({
-  state(): State {
-    return {
-      count: 0,
-      userInfo: {}
-    };
+  state: <State>{
+    userInfo: {}
   },
   mutations: {
-    increment(state: State) {
-      state.count++;
-    },
-    updateUserInfo(state: State, info) {
+    updateUserInfo(state: State, info: object) {
       state.userInfo = info;
     }
   }
