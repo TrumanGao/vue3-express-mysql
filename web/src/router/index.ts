@@ -26,6 +26,14 @@ const router = createRouter({
           meta: {
             title: "登录"
           }
+        },
+        {
+          path: "/Edit",
+          name: "Edit",
+          component: () => import("../views/Edit.vue"),
+          meta: {
+            title: "编辑"
+          }
         }
       ]
     },

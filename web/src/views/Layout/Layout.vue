@@ -21,13 +21,13 @@ export default {
   right: 0;
   top: 0;
   margin: auto;
-  background-color: rgba(1, 1, 1, 0.2);
+  color: #fff;
 }
 .layout-main {
   width: 100%;
-  height: calc(100% - 60px);
-  background-color: rgba(1, 1, 1, 0.1);
+  height: 100%;
   overflow-y: auto;
   padding-top: 60px;
+  color: #fff;
 }
 </style>

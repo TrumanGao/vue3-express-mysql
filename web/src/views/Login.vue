@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <h1>登录页面</h1>
+  <div class="login-page">
+    <div>登录页面</div>
   </div>
 </template>
 
@@ -12,4 +12,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="less">
+.login-page {
+  font-size: 30px;
+  background-color: #333333;
+}
+</style>

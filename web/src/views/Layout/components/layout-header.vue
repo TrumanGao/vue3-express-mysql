@@ -32,6 +32,11 @@ export default {
           title: "首页"
         },
         {
+          path: "/Edit",
+          name: "Edit",
+          title: "编辑"
+        },
+        {
           path: "/Login",
           name: "Login",
           title: "登录"
