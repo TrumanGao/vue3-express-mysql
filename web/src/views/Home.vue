@@ -4,19 +4,43 @@
       <input class="form-input" v-model="keyword" placeholder="请输入关键字" />
       <button class="form-btn" type="button">搜索</button>
     </div>
+    <div class="flex-center">
+      <button class="form-btn" @click="addCount">增加</button>
+      <div class="">{{ age }}</div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, watch } from "vue";
+import { ref, reactive, toRefs, watch } from "vue";
 export default {
   setup() {
     const keyword = ref("");
+    const count = reactive({
+      age: 10,
+      year: 2000
+    });
 
     watch(keyword, val => {
       console.log("keyword", val);
     });
-    return { keyword };
+
+    watch(
+      () => count.age,
+      (newVal, oldVal, clean) => {
+        console.log("监听数据", newVal, oldVal);
+        // clean(() => {
+        //   console.log("清除异步事务，暂不了解如何使用");
+        // });
+      }
+    );
+
+    function addCount() {
+      count.age += 1;
+      count.year += 1;
+    }
+
+    return { keyword, ...toRefs(count), addCount };
   }
 };
 </script>
