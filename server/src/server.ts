@@ -8,7 +8,6 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
-var logger = require("morgan");
 var bodyParser = require("body-parser"); // 调用bodyParser模块以便程序正确解析body传入json值
 
 var app = express();
@@ -28,37 +27,13 @@ app.all("*", function (req: any, res: any, next: any) {
   }
 });
 
-// view engine setup
-app.set("views", path.join(__dirname, "../views"));
-app.set("view engine", "jade");
-
-app.use(logger("dev"));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// 引入接口代码
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function (req: any, res: any, next: any) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function (err: any, req: any, res: any, next: any) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+// 引入api
+var siteRouter = require("./routes/site");
+app.use("/site", siteRouter);
 
 var debug = require("debug")("server:server");
 var http = require("http");
@@ -109,6 +84,7 @@ function normalizePort(val: string) {
  */
 
 function onError(error: any) {
+  console.log("监听http连接错误", error);
   if (error.syscall !== "listen") {
     throw error;
   }
@@ -133,8 +109,8 @@ function onError(error: any) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
+  console.log("监听http连接成功：http://localhost:3000/");
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
